@@ -1,0 +1,1178 @@
+<html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionCraft | 专业影视后期制作</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        // Tailwind 配置
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#8B5CF6',
+                        dark: '#0F172A',
+                        light: '#F8FAFC',
+                        accent: '#EC4899'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .backdrop-blur {
+                backdrop-filter: blur(8px);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .animate-float {
+                animation: float 6s ease-in-out infinite;
+            }
+            @keyframes float {
+                0% { transform: translateY(0px); }
+                50% { transform: translateY(-20px); }
+                100% { transform: translateY(0px); }
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Montserrat:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark text-light font-sans overflow-x-hidden">
+    <!-- 导航栏 -->
+    <header id="navbar" class="fixed w-full z-50 transition-all duration-300">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center backdrop-blur bg-dark/70">
+            <a href="#" class="flex items-center space-x-2">
+                <span class="text-primary text-3xl"><i class="fa fa-film"></i></span>
+                <span id="companyName" class="text-2xl font-display font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">VisionCraft</span>
+            </a>
+            
+            <!-- 桌面导航 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="hover:text-primary transition-colors">首页</a>
+                <a href="#works" class="hover:text-primary transition-colors">作品展示</a>
+                <a href="#about" class="hover:text-primary transition-colors">关于我们</a>
+                <a href="#contact" class="hover:text-primary transition-colors">联系我们</a>
+                <button id="adminBtn" class="bg-primary hover:bg-primary/80 text-white px-5 py-2 rounded-full transition-all transform hover:scale-105">管理员入口</button>
+            </div>
+            
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:hidden text-2xl">
+                <i class="fa fa-bars"></i>
+            </button>
+        </nav>
+        
+        <!-- 移动端导航菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-dark/95 backdrop-blur">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#home" class="py-2 hover:text-primary transition-colors">首页</a>
+                <a href="#works" class="py-2 hover:text-primary transition-colors">作品展示</a>
+                <a href="#about" class="py-2 hover:text-primary transition-colors">关于我们</a>
+                <a href="#contact" class="py-2 hover:text-primary transition-colors">联系我们</a>
+                <button id="mobileAdminBtn" class="bg-primary hover:bg-primary/80 text-white px-5 py-2 rounded-full transition-all w-full">
+                    管理员入口
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video autoplay="" muted="" loop="" class="w-full h-full object-cover opacity-60">
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-city-1173-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-dark"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10 text-center">
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-display font-bold leading-tight text-shadow mb-6 animate-fade-in">
+                打造视觉<span class="text-primary">盛宴</span>
+            </h1>
+            <p id="heroSubtitle" class="text-[clamp(1rem,3vw,1.5rem)] max-w-3xl mx-auto mb-10 text-gray-300 text-shadow">
+                专业影视后期制作，让每一个画面都传递震撼人心的力量
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#works" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-full text-lg font-medium transition-all transform hover:scale-105">
+                    浏览作品
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-white hover:border-primary hover:text-primary text-white px-8 py-3 rounded-full text-lg font-medium transition-all">
+                    联系我们
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#works" class="text-white/80 hover:text-white text-2xl">
+                <i class="fa fa-angle-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 作品展示区 -->
+    <section id="works" class="py-20 bg-gradient-to-b from-dark to-dark/95">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-4">精选作品</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">探索我们的创意世界，每一部作品都凝聚了我们对视觉艺术的极致追求</p>
+            </div>
+            
+            <!-- 作品分类 -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="work-filter active px-6 py-2 rounded-full bg-dark border border-gray-700 hover:border-primary transition-all" data-filter="all">全部</button>
+                <button class="work-filter px-6 py-2 rounded-full bg-dark border border-gray-700 hover:border-primary transition-all" data-filter="commercial">商业广告</button>
+                <button class="work-filter px-6 py-2 rounded-full bg-dark border border-gray-700 hover:border-primary transition-all" data-filter="film">电影</button>
+                <button class="work-filter px-6 py-2 rounded-full bg-dark border border-gray-700 hover:border-primary transition-all" data-filter="mv">音乐MV</button>
+            </div>
+            
+            <!-- 作品网格 -->
+            <div id="worksGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 作品将通过JavaScript动态加载 -->
+            </div>
+            
+            <!-- 加载更多按钮 -->
+            <div class="text-center mt-16">
+                <button id="loadMoreBtn" class="bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded-full text-lg font-medium transition-all">
+                    加载更多作品
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-gradient-to-b from-dark/95 to-dark">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <img src="https://picsum.photos/id/1073/800/600" alt="影视后期制作团队工作场景" class="rounded-lg shadow-2xl w-full h-auto">
+                        <div class="absolute -bottom-6 -right-6 bg-primary p-6 rounded-lg shadow-xl hidden md:block">
+                            <p class="text-4xl font-bold">10+</p>
+                            <p class="text-sm">年行业经验</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-6">关于<span id="aboutCompanyName" class="text-primary">VisionCraft</span></h2>
+                    <div id="companyDescription" class="text-gray-300 mb-8 space-y-4">
+                        <p>VisionCraft 成立于2013年，是一家专注于影视后期制作的专业公司。我们拥有一支充满激情和创意的团队，致力于为客户提供高品质的视觉效果解决方案。</p>
+                        <p>多年来，我们与众多知名导演、制片人和品牌合作，参与了上百部电影、电视剧、广告和音乐MV的后期制作工作，赢得了业界的广泛认可。</p>
+                        <p>我们的服务包括：视觉特效(VFX)、动画制作、色彩校正、剪辑合成、片头片尾设计等全方位的后期制作服务。</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-dark/50 border border-gray-800 p-6 rounded-lg">
+                            <span class="text-4xl text-primary mb-2 block"><i class="fa fa-trophy"></i></span>
+                            <h3 class="text-xl font-semibold mb-2">专业品质</h3>
+                            <p class="text-gray-400">精益求精的制作标准</p>
+                        </div>
+                        <div class="bg-dark/50 border border-gray-800 p-6 rounded-lg">
+                            <span class="text-4xl text-primary mb-2 block"><i class="fa fa-lightbulb-o"></i></span>
+                            <h3 class="text-xl font-semibold mb-2">创新思维</h3>
+                            <p class="text-gray-400">突破常规的创意理念</p>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="inline-block bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-full text-lg font-medium transition-all transform hover:scale-105">
+                        了解更多
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务介绍 -->
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-4">我们的服务</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">提供全方位的影视后期制作服务，满足您的各种创作需求</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-dark/50 border border-gray-800 rounded-xl p-8 hover:border-primary transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                        <i class="fa fa-magic text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">视觉特效</h3>
+                    <p class="text-gray-400">专业的视觉特效制作，从概念设计到最终合成，为您的作品增添震撼视觉体验。</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-gray-800 rounded-xl p-8 hover:border-primary transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                        <i class="fa fa-paint-brush text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">色彩校正</h3>
+                    <p class="text-gray-400">专业调色师团队，通过精准的色彩校正和风格化处理，赋予影片独特的视觉风格。</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-gray-800 rounded-xl p-8 hover:border-primary transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                        <i class="fa fa-film text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">剪辑合成</h3>
+                    <p class="text-gray-400">精湛的剪辑技巧，结合创意叙事，打造流畅且富有感染力的影片节奏。</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-gray-800 rounded-xl p-8 hover:border-primary transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                        <i class="fa fa-video-camera text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">动画制作</h3>
+                    <p class="text-gray-400">2D/3D动画制作，角色设计与动画，为您的作品增添生动有趣的视觉元素。</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-gray-800 rounded-xl p-8 hover:border-primary transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                        <i class="fa fa-music text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">音效配乐</h3>
+                    <p class="text-gray-400">专业音效设计与配乐制作，增强影片的情感表达和观众沉浸感。</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-gray-800 rounded-xl p-8 hover:border-primary transition-all group">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-all">
+                        <i class="fa fa-font text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">片头片尾</h3>
+                    <p class="text-gray-400">创意片头片尾设计，结合动态图形和视觉效果，打造独特的品牌标识。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section id="contact" class="py-20 bg-gradient-to-b from-dark to-dark/90">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(1.8rem,5vw,3rem)] font-display font-bold mb-4">联系我们</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">无论您有任何项目需求或合作意向，都欢迎与我们联系</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form id="contactForm" class="bg-dark/50 border border-gray-800 rounded-xl p-8">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-300 mb-2">您的姓名</label>
+                            <input type="text" id="name" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all" placeholder="请输入您的姓名">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-300 mb-2">电子邮箱</label>
+                            <input type="email" id="email" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all" placeholder="请输入您的电子邮箱">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-300 mb-2">主题</label>
+                            <input type="text" id="subject" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all" placeholder="请输入咨询主题">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-300 mb-2">留言内容</label>
+                            <textarea id="message" rows="5" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all resize-none" placeholder="请输入您的留言内容"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all transform hover:scale-[1.02]">
+                            发送留言
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="h-full bg-dark/50 border border-gray-800 rounded-xl p-8 flex flex-col">
+                        <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                        
+                        <div class="space-y-6 mb-8">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fa fa-map-marker text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-1">公司地址</h4>
+                                    <p class="text-gray-400">北京市朝阳区建国路88号影视创意园A座5层</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fa fa-phone text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-1">联系电话</h4>
+                                    <p class="text-gray-400">+86 10 8888 7777</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 shrink-0">
+                                    <i class="fa fa-envelope text-xl text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold mb-1">电子邮箱</h4>
+                                    <p class="text-gray-400">contact@visioncraft.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-auto">
+                            <h3 class="text-2xl font-bold mb-6">关注我们</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-weixin text-white"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-weibo text-white"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-instagram text-white"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 bg-gray-800 hover:bg-primary rounded-full flex items-center justify-center transition-all">
+                                    <i class="fa fa-youtube-play text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-12 bg-dark border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="flex items-center space-x-2">
+                        <span class="text-primary text-2xl"><i class="fa fa-film"></i></span>
+                        <span id="footerCompanyName" class="text-xl font-display font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">VisionCraft</span>
+                    </a>
+                    <p class="text-gray-500 mt-2">专业影视后期制作服务提供商</p>
+                </div>
+                
+                <div class="text-gray-500 text-sm">
+                    © <span id="currentYear"></span> <span id="footerCopyrightName">VisionCraft</span>. 保留所有权利.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 作品详情模态框 -->
+    <div id="workModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="modalOverlay"></div>
+        <div class="relative bg-dark border border-gray-800 rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto m-4">
+            <button id="closeModal" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-dark/50 hover:bg-gray-800 z-10 transition-all">
+                <i class="fa fa-times text-white"></i>
+            </button>
+            
+            <div id="modalContent" class="p-6">
+                <!-- 内容将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 管理员登录模态框 -->
+    <div id="adminLoginModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="loginOverlay"></div>
+        <div class="relative bg-dark border border-gray-800 rounded-xl w-full max-w-md p-8 m-4">
+            <button id="closeLoginModal" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-dark/50 hover:bg-gray-800 z-10 transition-all">
+                <i class="fa fa-times text-white"></i>
+            </button>
+            
+            <h3 class="text-2xl font-bold mb-6 text-center">管理员登录</h3>
+            
+            <form id="loginForm">
+                <div class="mb-6">
+                    <label for="adminUsername" class="block text-gray-300 mb-2">用户名</label>
+                    <input type="text" id="adminUsername" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all" placeholder="请输入用户名">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="adminPassword" class="block text-gray-300 mb-2">密码</label>
+                    <input type="password" id="adminPassword" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all" placeholder="请输入密码">
+                </div>
+                
+                <div id="loginError" class="mb-6 text-red-500 text-sm hidden">
+                    用户名或密码错误，请重试
+                </div>
+                
+                <button type="submit" class="w-full bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                    登录
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 管理员面板 -->
+    <div id="adminPanel" class="fixed inset-0 z-50 bg-dark flex hidden">
+        <div class="w-64 bg-dark/80 border-r border-gray-800 p-6 flex flex-col">
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-2">管理员面板</h3>
+                <p class="text-gray-500 text-sm">管理网站内容和设置</p>
+            </div>
+            
+            <div class="space-y-2 flex-grow">
+                <button id="workManagementBtn" class="w-full text-left px-4 py-3 rounded-lg bg-primary/10 text-primary font-medium transition-all">
+                    作品管理
+                </button>
+                <button id="companyInfoBtn" class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-800 transition-all">
+                    公司信息设置
+                </button>
+            </div>
+            
+            <div class="mt-auto pt-6 border-t border-gray-800">
+                <button id="logoutBtn" class="w-full text-left px-4 py-3 rounded-lg hover:bg-gray-800 transition-all text-gray-400">
+                    <i class="fa fa-sign-out mr-2"></i> 退出登录
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex-grow p-8 overflow-y-auto">
+            <!-- 作品管理面板 -->
+            <div id="workManagementPanel">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-bold">作品管理</h2>
+                    <button id="addWorkBtn" class="bg-primary hover:bg-primary/80 text-white px-6 py-2 rounded-lg transition-all">
+                        <i class="fa fa-plus mr-2"></i> 添加新作品
+                    </button>
+                </div>
+                
+                <div class="bg-dark/50 border border-gray-800 rounded-xl overflow-hidden">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-800">
+                                <th class="px-6 py-4 text-left text-gray-400">作品名称</th>
+                                <th class="px-6 py-4 text-left text-gray-400">分类</th>
+                                <th class="px-6 py-4 text-left text-gray-400">上传时间</th>
+                                <th class="px-6 py-4 text-right text-gray-400">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="worksTableBody">
+                            <!-- 作品数据将通过JavaScript动态加载 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 公司信息设置面板 -->
+            <div id="companyInfoPanel" class="hidden">
+                <h2 class="text-2xl font-bold mb-8">公司信息设置</h2>
+                
+                <form id="companyInfoForm" class="bg-dark/50 border border-gray-800 rounded-xl p-8">
+                    <div class="mb-6">
+                        <label for="companyNameInput" class="block text-gray-300 mb-2">公司名称</label>
+                        <input type="text" id="companyNameInput" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="heroSubtitleInput" class="block text-gray-300 mb-2">首页副标题</label>
+                        <input type="text" id="heroSubtitleInput" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all">
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="companyDescriptionInput" class="block text-gray-300 mb-2">公司简介</label>
+                        <textarea id="companyDescriptionInput" rows="8" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all resize-none"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                        保存设置
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加作品模态框 -->
+    <div id="addWorkModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" id="addWorkOverlay"></div>
+        <div class="relative bg-dark border border-gray-800 rounded-xl w-full max-w-2xl p-8 m-4">
+            <button id="closeAddWorkModal" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full bg-dark/50 hover:bg-gray-800 z-10 transition-all">
+                <i class="fa fa-times text-white"></i>
+            </button>
+            
+            <h3 class="text-2xl font-bold mb-6">添加新作品</h3>
+            
+            <form id="addWorkForm">
+                <div class="mb-6">
+                    <label for="workTitle" class="block text-gray-300 mb-2">作品标题</label>
+                    <input type="text" id="workTitle" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all" placeholder="请输入作品标题">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="workCategory" class="block text-gray-300 mb-2">作品分类</label>
+                    <select id="workCategory" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all">
+                        <option value="commercial">商业广告</option>
+                        <option value="film">电影</option>
+                        <option value="mv">音乐MV</option>
+                    </select>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="workDescription" class="block text-gray-300 mb-2">作品描述</label>
+                    <textarea id="workDescription" rows="4" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all resize-none" placeholder="请输入作品描述"></textarea>
+                </div>
+                
+                <div class="mb-6">
+                    <label for="workThumbnail" class="block text-gray-300 mb-2">作品缩略图</label>
+                    <input type="file" id="workThumbnail" accept="image/*" class="w-full text-gray-400">
+                </div>
+                
+                <div class="mb-6">
+                    <label for="workVideo" class="block text-gray-300 mb-2">作品视频</label>
+                    <input type="file" id="workVideo" accept="video/*" class="w-full text-gray-400">
+                    <p class="text-gray-500 text-sm mt-2">或者输入视频URL</p>
+                    <input type="text" id="workVideoUrl" class="w-full bg-dark border border-gray-700 rounded-lg px-4 py-3 text-white focus:border-primary focus:outline-none transition-all mt-2" placeholder="请输入视频URL">
+                </div>
+                
+                <button type="submit" class="w-full bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-medium transition-all">
+                    保存作品
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 示例数据 - 在实际应用中会从服务器获取
+        let works = [
+            {
+                id: 1,
+                title: "城市印象宣传片",
+                category: "commercial",
+                categoryName: "商业广告",
+                description: "这部宣传片通过独特的视角和拍摄手法，展现了现代都市的活力与魅力。我们负责了全部后期制作工作，包括剪辑、调色和视觉特效。",
+                thumbnail: "https://picsum.photos/id/1031/600/400",
+                videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-traveling-through-a-sunset-city-1166-large.mp4",
+                date: "2023-06-15"
+            },
+            {
+                id: 2,
+                title: "海洋奇缘 - 电影片段",
+                category: "film",
+                categoryName: "电影",
+                description: "这是我们参与制作的奇幻电影《海洋奇缘》中的精彩片段。我们团队负责了该片的水下场景特效和部分角色动画，为观众呈现了震撼的视觉体验。",
+                thumbnail: "https://picsum.photos/id/1039/600/400",
+                videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-divers-swim-through-coral-reefs-1162-large.mp4",
+                date: "2023-04-22"
+            },
+            {
+                id: 3,
+                title: "星辰大海 - 音乐MV",
+                category: "mv",
+                categoryName: "音乐MV",
+                description: "为知名歌手打造的音乐MV，结合了科幻与现实元素，通过后期制作实现了诸多不可能的视觉效果，完美呈现了歌曲所要表达的意境。",
+                thumbnail: "https://picsum.photos/id/1050/600/400",
+                videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-city-1173-large.mp4",
+                date: "2023-02-18"
+            },
+            {
+                id: 4,
+                title: "科技产品发布会",
+                category: "commercial",
+                categoryName: "商业广告",
+                description: "为国际科技品牌新产品发布会制作的宣传视频，运用了大量3D动画和特效，展示了产品的创新功能和未来科技感。",
+                thumbnail: "https://picsum.photos/id/1059/600/400",
+                videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-futuristic-interface-with-digital-lines-1169-large.mp4",
+                date: "2023-05-30"
+            },
+            {
+                id: 5,
+                title: "远山的呼唤 - 电影预告片",
+                category: "film",
+                categoryName: "电影",
+                description: "这部文艺片的预告片后期制作由我们团队完成，通过精心的剪辑节奏和色彩处理，营造出独特的情感氛围，引发观众的观影欲望。",
+                thumbnail: "https://picsum.photos/id/1018/600/400",
+                videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-trees-in-the-fall-1172-large.mp4",
+                date: "2023-01-10"
+            },
+            {
+                id: 6,
+                title: "心跳节拍 - 舞蹈MV",
+                category: "mv",
+                categoryName: "音乐MV",
+                description: "为流行舞蹈组合制作的MV，结合了动态图形和特效，突出舞蹈的节奏感和力量感，后期制作中大量使用了动作追踪和特效合成技术。",
+                thumbnail: "https://picsum.photos/id/1035/600/400",
+                videoUrl: "https://assets.mixkit.co/videos/preview/mixkit-group-of-friends-dancing-at-a-party-1171-large.mp4",
+                date: "2023-03-25"
+            }
+        ];
+
+        // 公司信息
+        let companyInfo = {
+            name: "VisionCraft",
+            heroSubtitle: "专业影视后期制作，让每一个画面都传递震撼人心的力量",
+            description: `VisionCraft 成立于2013年，是一家专注于影视后期制作的专业公司。我们拥有一支充满激情和创意的团队，致力于为客户提供高品质的视觉效果解决方案。<br><br>
+多年来，我们与众多知名导演、制片人和品牌合作，参与了上百部电影、电视剧、广告和音乐MV的后期制作工作，赢得了业界的广泛认可。<br><br>
+我们的服务包括：视觉特效(VFX)、动画制作、色彩校正、剪辑合成、片头片尾设计等全方位的后期制作服务。`
+        };
+
+        // DOM 元素
+        const navbar = document.getElementById('navbar');
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const adminBtn = document.getElementById('adminBtn');
+        const mobileAdminBtn = document.getElementById('mobileAdminBtn');
+        const adminLoginModal = document.getElementById('adminLoginModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const loginOverlay = document.getElementById('loginOverlay');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const adminPanel = document.getElementById('adminPanel');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const workManagementBtn = document.getElementById('workManagementBtn');
+        const companyInfoBtn = document.getElementById('companyInfoBtn');
+        const workManagementPanel = document.getElementById('workManagementPanel');
+        const companyInfoPanel = document.getElementById('companyInfoPanel');
+        const addWorkBtn = document.getElementById('addWorkBtn');
+        const addWorkModal = document.getElementById('addWorkModal');
+        const closeAddWorkModal = document.getElementById('closeAddWorkModal');
+        const addWorkOverlay = document.getElementById('addWorkOverlay');
+        const addWorkForm = document.getElementById('addWorkForm');
+        const worksGrid = document.getElementById('worksGrid');
+        const worksTableBody = document.getElementById('worksTableBody');
+        const workModal = document.getElementById('workModal');
+        const closeModal = document.getElementById('closeModal');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const modalContent = document.getElementById('modalContent');
+        const contactForm = document.getElementById('contactForm');
+        const companyInfoForm = document.getElementById('companyInfoForm');
+        const workFilters = document.querySelectorAll('.work-filter');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        const currentYearElement = document.getElementById('currentYear');
+
+        // 初始化页面
+        function init() {
+            // 设置当前年份
+            currentYearElement.textContent = new Date().getFullYear();
+            
+            // 加载公司信息
+            updateCompanyInfoDisplay();
+            
+            // 加载作品
+            renderWorks();
+            renderWorksTable();
+            
+            // 事件监听
+            setupEventListeners();
+        }
+
+        // 设置事件监听
+        function setupEventListeners() {
+            // 导航栏滚动效果
+            window.addEventListener('scroll', handleScroll);
+            
+            // 移动端菜单
+            menuBtn.addEventListener('click', toggleMobileMenu);
+            
+            // 管理员入口
+            adminBtn.addEventListener('click', openAdminLoginModal);
+            mobileAdminBtn.addEventListener('click', openAdminLoginModal);
+            
+            // 关闭登录模态框
+            closeLoginModal.addEventListener('click', closeAdminLoginModal);
+            loginOverlay.addEventListener('click', closeAdminLoginModal);
+            
+            // 登录表单提交
+            loginForm.addEventListener('submit', handleLogin);
+            
+            // 管理员面板操作
+            logoutBtn.addEventListener('click', handleLogout);
+            workManagementBtn.addEventListener('click', showWorkManagement);
+            companyInfoBtn.addEventListener('click', showCompanyInfo);
+            
+            // 添加作品
+            addWorkBtn.addEventListener('click', openAddWorkModal);
+            closeAddWorkModal.addEventListener('click', closeAddWorkModal);
+            addWorkOverlay.addEventListener('click', closeAddWorkModal);
+            addWorkForm.addEventListener('submit', handleAddWork);
+            
+            // 作品模态框
+            closeModal.addEventListener('click', closeWorkModal);
+            modalOverlay.addEventListener('click', closeWorkModal);
+            
+            // 联系表单提交
+            contactForm.addEventListener('submit', handleContactFormSubmit);
+            
+            // 公司信息表单提交
+            companyInfoForm.addEventListener('submit', handleCompanyInfoSubmit);
+            
+            // 作品筛选
+            workFilters.forEach(filter => {
+                filter.addEventListener('click', handleWorkFilter);
+            });
+            
+            // 加载更多
+            loadMoreBtn.addEventListener('click', handleLoadMore);
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // 关闭移动菜单
+                        if (mobileMenu.classList.contains('block')) {
+                            toggleMobileMenu();
+                        }
+                    }
+                });
+            });
+        }
+
+        // 处理滚动事件 - 导航栏样式变化
+        function handleScroll() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-dark/90', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-dark/90', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+        }
+
+        // 切换移动端菜单
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuBtn.innerHTML = '<i class="fa fa-bars"></i>';
+            } else {
+                menuBtn.innerHTML = '<i class="fa fa-times"></i>';
+            }
+        }
+
+        // 打开管理员登录模态框
+        function openAdminLoginModal() {
+            adminLoginModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            // 重置登录状态
+            loginError.classList.add('hidden');
+            loginForm.reset();
+        }
+
+        // 关闭管理员登录模态框
+        function closeAdminLoginModal() {
+            adminLoginModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // 处理登录
+        function handleLogin(e) {
+            e.preventDefault();
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // 隐藏之前的错误提示
+            loginError.classList.add('hidden');
+            
+            // 简单验证 - 实际应用中会与服务器交互
+            if (username === 'admin' && password === 'admin123') {
+                closeAdminLoginModal();
+                openAdminPanel();
+                // 清空表单
+                loginForm.reset();
+            } else {
+                // 显示错误提示
+                loginError.classList.remove('hidden');
+                // 添加抖动动画
+                const modal = document.querySelector('#adminLoginModal .relative');
+                modal.classList.add('animate-shake');
+                setTimeout(() => {
+                    modal.classList.remove('animate-shake');
+                }, 500);
+            }
+        }
+
+        // 打开管理员面板
+        function openAdminPanel() {
+            adminPanel.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭管理员面板
+        function closeAdminPanel() {
+            adminPanel.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // 处理登出
+        function handleLogout() {
+            closeAdminPanel();
+        }
+
+        // 显示作品管理面板
+        function showWorkManagement() {
+            workManagementPanel.classList.remove('hidden');
+            companyInfoPanel.classList.add('hidden');
+            workManagementBtn.classList.add('bg-primary/10', 'text-primary');
+            workManagementBtn.classList.remove('hover:bg-gray-800');
+            companyInfoBtn.classList.remove('bg-primary/10', 'text-primary');
+            companyInfoBtn.classList.add('hover:bg-gray-800');
+        }
+
+        // 显示公司信息设置面板
+        function showCompanyInfo() {
+            workManagementPanel.classList.add('hidden');
+            companyInfoPanel.classList.remove('hidden');
+            workManagementBtn.classList.remove('bg-primary/10', 'text-primary');
+            workManagementBtn.classList.add('hover:bg-gray-800');
+            companyInfoBtn.classList.add('bg-primary/10', 'text-primary');
+            companyInfoBtn.classList.remove('hover:bg-gray-800');
+            
+            // 填充表单
+            document.getElementById('companyNameInput').value = companyInfo.name;
+            document.getElementById('heroSubtitleInput').value = companyInfo.heroSubtitle;
+            document.getElementById('companyDescriptionInput').value = companyInfo.description.replace(/<br>/g, '\n');
+        }
+
+        // 打开添加作品模态框
+        function openAddWorkModal() {
+            addWorkModal.classList.remove('hidden');
+        }
+
+        // 关闭添加作品模态框
+        function closeAddWorkModal() {
+            addWorkModal.classList.add('hidden');
+            addWorkForm.reset();
+        }
+
+        // 处理添加作品
+        function handleAddWork(e) {
+            e.preventDefault();
+            
+            const title = document.getElementById('workTitle').value;
+            const category = document.getElementById('workCategory').value;
+            const description = document.getElementById('workDescription').value;
+            const videoUrl = document.getElementById('workVideoUrl').value;
+            
+            // 简单验证
+            if (!title || !description || (!videoUrl && !document.getElementById('workVideo').files[0])) {
+                alert('请填写必要的作品信息');
+                return;
+            }
+            
+            // 生成分类名称
+            let categoryName = '';
+            switch(category) {
+                case 'commercial':
+                    categoryName = '商业广告';
+                    break;
+                case 'film':
+                    categoryName = '电影';
+                    break;
+                case 'mv':
+                    categoryName = '音乐MV';
+                    break;
+            }
+            
+            // 创建新作品对象
+            const newWork = {
+                id: works.length + 1,
+                title,
+                category,
+                categoryName,
+                description,
+                thumbnail: `https://picsum.photos/id/${1060 + works.length}/600/400`, // 随机图片
+                videoUrl: videoUrl || `https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-city-${1170 + works.length}-large.mp4`,
+                date: new Date().toISOString().split('T')[0]
+            };
+            
+            // 添加到作品列表
+            works.unshift(newWork);
+            
+            // 更新显示
+            renderWorks();
+            renderWorksTable();
+            
+            // 关闭模态框并重置表单
+            closeAddWorkModal();
+            
+            alert('作品添加成功');
+        }
+
+        // 渲染作品列表
+        function renderWorks(filter = 'all') {
+            worksGrid.innerHTML = '';
+            
+            const filteredWorks = filter === 'all' 
+                ? works 
+                : works.filter(work => work.category === filter);
+            
+            filteredWorks.forEach(work => {
+                const workCard = document.createElement('div');
+                workCard.className = 'group bg-dark/50 border border-gray-800 rounded-xl overflow-hidden hover:border-primary transition-all transform hover:-translate-y-1';
+                workCard.innerHTML = `
+                    <div class="relative overflow-hidden">
+                        <img src="${work.thumbnail}" alt="${work.title}" class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center p-6">
+                            <button class="view-work-btn bg-primary hover:bg-primary/80 text-white px-6 py-2 rounded-full transition-all transform translate-y-4 group-hover:translate-y-0" data-id="${work.id}">
+                                查看详情
+                            </button>
+                        </div>
+                        <div class="absolute top-4 left-4 bg-primary/90 text-white text-sm px-3 py-1 rounded-full">
+                            ${work.categoryName}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">${work.title}</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 mb-4">${work.description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-500 text-sm">${work.date}</span>
+                            <button class="view-work-btn text-primary hover:text-primary/80 transition-colors" data-id="${work.id}">
+                                查看 <i class="fa fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                worksGrid.appendChild(workCard);
+            });
+            
+            // 为查看作品按钮添加事件监听
+            document.querySelectorAll('.view-work-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const workId = parseInt(btn.getAttribute('data-id'));
+                    openWorkModal(workId);
+                });
+            });
+        }
+
+        // 渲染作品管理表格
+        function renderWorksTable() {
+            worksTableBody.innerHTML = '';
+            
+            works.forEach(work => {
+                const row = document.createElement('tr');
+                row.className = 'border-b border-gray-800 hover:bg-gray-800/30 transition-colors';
+                row.innerHTML = `
+                    <td class="px-6 py-4">${work.title}</td>
+                    <td class="px-6 py-4">${work.categoryName}</td>
+                    <td class="px-6 py-4">${work.date}</td>
+                    <td class="px-6 py-4 text-right">
+                        <div class="flex justify-end space-x-2">
+                            <button class="edit-work-btn text-gray-400 hover:text-primary transition-colors" data-id="${work.id}">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="delete-work-btn text-gray-400 hover:text-red-500 transition-colors" data-id="${work.id}">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                `;
+                
+                worksTableBody.appendChild(row);
+            });
+            
+            // 为编辑和删除按钮添加事件监听
+            document.querySelectorAll('.delete-work-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const workId = parseInt(btn.getAttribute('data-id'));
+                    if (confirm('确定要删除这个作品吗？')) {
+                        deleteWork(workId);
+                    }
+                });
+            });
+            
+            // 编辑功能可以在这里实现
+            document.querySelectorAll('.edit-work-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const workId = parseInt(btn.getAttribute('data-id'));
+                    alert('编辑功能将在后续版本中实现: ' + workId);
+                });
+            });
+        }
+
+        // 删除作品
+        function deleteWork(id) {
+            works = works.filter(work => work.id !== id);
+            renderWorks();
+            renderWorksTable();
+        }
+
+        // 打开作品详情模态框
+        function openWorkModal(id) {
+            const work = works.find(work => work.id === id);
+            if (work) {
+                modalContent.innerHTML = `
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold mb-2">${work.title}</h3>
+                        <div class="flex items-center space-x-4 text-gray-400">
+                            <span>${work.categoryName}</span>
+                            <span>•</span>
+                            <span>${work.date}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-6 rounded-lg overflow-hidden bg-gray-800/50">
+                        <video controls class="w-full aspect-video object-contain">
+                            <source src="${work.videoUrl}" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold mb-3">作品描述</h4>
+                        <p class="text-gray-300 whitespace-pre-line">${work.description}</p>
+                    </div>
+                `;
+                
+                workModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // 关闭作品详情模态框
+        function closeWorkModal() {
+            workModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // 处理联系表单提交
+        function handleContactFormSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // 简单验证
+            if (!name || !email || !message) {
+                alert('请填写必要的联系信息');
+                return;
+            }
+            
+            // 模拟提交成功
+            alert('感谢您的留言，我们会尽快与您联系！');
+            contactForm.reset();
+        }
+
+        // 处理公司信息提交
+        function handleCompanyInfoSubmit(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('companyNameInput').value;
+            const heroSubtitle = document.getElementById('heroSubtitleInput').value;
+            let description = document.getElementById('companyDescriptionInput').value;
+            
+            // 简单验证
+            if (!name || !heroSubtitle || !description) {
+                alert('请填写完整的公司信息');
+                return;
+            }
+            
+            // 替换换行符为<br>
+            description = description.replace(/\n/g, '<br>');
+            
+            // 更新公司信息
+            companyInfo = {
+                name,
+                heroSubtitle,
+                description
+            };
+            
+            // 更新显示
+            updateCompanyInfoDisplay();
+            
+            alert('公司信息更新成功');
+        }
+
+        // 更新公司信息显示
+        function updateCompanyInfoDisplay() {
+            document.getElementById('companyName').textContent = companyInfo.name;
+            document.getElementById('aboutCompanyName').textContent = companyInfo.name;
+            document.getElementById('footerCompanyName').textContent = companyInfo.name;
+            document.getElementById('footerCopyrightName').textContent = companyInfo.name;
+            document.getElementById('heroSubtitle').textContent = companyInfo.heroSubtitle;
+            document.getElementById('companyDescription').innerHTML = companyInfo.description;
+        }
+
+        // 处理作品筛选
+        function handleWorkFilter() {
+            // 更新筛选按钮样式
+            workFilters.forEach(btn => {
+                btn.classList.remove('active', 'bg-primary/10', 'text-primary', 'border-primary');
+                btn.classList.add('border-gray-700');
+            });
+            
+            this.classList.add('active', 'bg-primary/10', 'text-primary', 'border-primary');
+            this.classList.remove('border-gray-700');
+            
+            // 筛选作品
+            const filter = this.getAttribute('data-filter');
+            renderWorks(filter);
+        }
+
+        // 处理加载更多
+        function handleLoadMore() {
+            // 模拟加载更多作品
+            const moreWorks = [
+                {
+                    id: works.length + 1,
+                    title: "自然风景延时摄影",
+                    category: "commercial",
+                    categoryName: "商业广告",
+                    description: "这是一部展示自然美景的延时摄影作品，我们负责了后期剪辑、调色和配乐，展现了大自然的壮丽与变幻。",
+                    thumbnail: `https://picsum.photos/id/${1065 + works.length}/600/400`,
+                    videoUrl: `https://assets.mixkit.co/videos/preview/mixkit-clouds-and-blue-sky-time-lapse-1184-large.mp4`,
+                    date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+                },
+                {
+                    id: works.length + 2,
+                    title: "未来城市 - 短片",
+                    category: "film",
+                    categoryName: "电影",
+                    description: "这部科幻短片描绘了未来城市的景象，我们团队负责了所有的视觉特效和3D场景构建，打造出令人惊叹的未来世界。",
+                    thumbnail: `https://picsum.photos/id/${1070 + works.length}/600/400`,
+                    videoUrl: `https://assets.mixkit.co/videos/preview/mixkit-futuristic-city-with-flying-cars-1183-large.mp4`,
+                    date: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+                }
+            ];
+            
+            works = [...works, ...moreWorks];
+            renderWorks(document.querySelector('.work-filter.active')?.getAttribute('data-filter') || 'all');
+            renderWorksTable();
+            
+            // 隐藏加载更多按钮
+            loadMoreBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            loadMoreBtn.innerHTML = '已加载全部作品';
+            loadMoreBtn.removeEventListener('click', handleLoadMore);
+        }
+
+        // 添加抖动动画样式
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+            .animate-shake {
+                animation: shake 0.5s ease-in-out;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化页面
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+
+
+</body></html>
